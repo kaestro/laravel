@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/{foo?}', function ($foo = 'bar') {
+    return $foo;
+})->where('foo', '[0-9a-zA-Z]{3}');
+
+Route::get('welcome', function () {
+    return view('welcome', [
+        'name' => 'Foo',
+        'greeting' => '안녕하세요?',
+    ]);
+});
